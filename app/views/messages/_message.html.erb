@@ -1,0 +1,9 @@
+<div class="p-4 rounded-lg bg-gray-800 shadow-lg border border-gray-700">
+  <div class="flex justify-between items-start">
+    <span class="font-semibold text-gray-200"><%= message.user.email_address %></span>
+    <span class="text-sm text-gray-400">
+      <%= time_ago_in_words(message.created_at) %> ago
+    </span>
+  </div>
+  <p class="mt-1 text-gray-300"><%= message.content %></p>
+</div>
