@@ -1,5 +1,5 @@
 <%# locals: message %>
-<%= form_with(model: Message.new, local: true, id: "new_message", class: "flex flex-col gap-2") do |f| %>
+<%= form_with(model: message, local: true, id: "new_message", class: "flex flex-col gap-2") do |f| %>
   <div class="flex gap-2">
     <%= f.text_field :content,
           class: "flex-1 rounded-lg bg-gray-800 border-gray-700 text-white placeholder-gray-400 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500/50",
