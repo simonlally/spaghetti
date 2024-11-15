@@ -1,0 +1,20 @@
+<%# locals: message %>
+<%= form_with(model: Message.new, local: true, id: "new_message", class: "flex flex-col gap-2") do |f| %>
+  <div class="flex gap-2">
+    <%= f.text_field :content,
+          class: "flex-1 rounded-lg bg-gray-800 border-gray-700 text-white placeholder-gray-400 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500/50",
+          placeholder: "Type your message...",
+          required: true %>
+    <%= f.submit "Send",
+          class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700" %>
+  </div>
+  <% if message.errors.any? %>
+    <div class="bg-red-500 text-white p-4 rounded-lg">
+      <ul>
+        <% message.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

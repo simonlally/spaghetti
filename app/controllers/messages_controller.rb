@@ -1,7 +1,26 @@
 class MessagesController < ApplicationController
   def create
     @message = Current.user.messages.build(content: message_params[:content])
-    @message.save
+
+    respond_to do |format|
+      if @message.save
+        format.turbo_stream {
+          render turbo_stream: turbo_stream.replace(
+            "new_message",
+            partial: "messages/form",
+            locals: { message: Message.new }
+          )
+        }
+      else
+        format.turbo_stream {
+          render turbo_stream: turbo_stream.replace(
+            "new_message",
+            partial: "messages/form",
+            locals: { message: @message }
+          )
+        }
+      end
+    end
   end
 
   private
